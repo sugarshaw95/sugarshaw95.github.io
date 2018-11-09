@@ -1,80 +1,93 @@
-<!DOCTYPE html>
-<!-- saved from url=(0060)https://bootstrap.ninghao.net/examples/starter-template.html -->
-<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <title>sugarshaw95.me</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Our Love Story</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		@font-face {
+			font-family: digit;
+			src: url('digital-7_mono.ttf') format("truetype");
+		}
+	</style>
+	<link href="css/default.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/garden.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
+</head>
 
-    <!-- Le styles -->
-    <link href="./Bootstrap, from Twitter_files/bootstrap.css" rel="stylesheet">
-    <style>
-      body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-      }
-    </style>
-    <link href="./Bootstrap, from Twitter_files/bootstrap-responsive.css" rel="stylesheet">
+<body>
+	<div id="mainDiv">
+		<div id="content">
+			<div id="code">
+				<span class="comments">我的爱人</span><br />
+				<span class="space"/><span class="comments">我会牵着你的手，走到我们满头白发的那一天</span><br />
+				<span class="space"/><span class="comments">我会守护你生命里的精彩，并陪伴你一路精彩下去。</span><br />
+				<span class="space"/><span class="comments">你的幸福快乐，是我一生的追求。</span><br />
+				<span class="space"/>我会每一天带着笑脸，和你说早安，<br />
+				<span class="space"/>我会每一晚与你道声晚安再入梦乡，<br />
+				<span class="space"/>我会带你去所有你想去的地方，<br />
+				<span class="space"/>陪你闹看你笑<br />
+				<span class="space"/>历经你生命中所有的点点滴滴。<br />
+				<span class="space"/>我期待这一生与你一起走过，<br />
+				<span class="space"/>走到尽头再回头看尽一生铅华满地，<br />
+				<span class="space"/>我期待与你慢慢变老，<br />
+				<span class="space"/>等我们老到哪儿也去不了，<br />
+				<span class="space"/>还能满载着一生的幸福快乐。<br />
+				<span class="keyword">我愿意爱你直到老去，<br />
+				<span class="space"/>我会为我们的未来撑起一片天空，<br />
+				<span class="space"/>为我们的将来担负起一生的责任，<br />
+				<span class="space"/>愿意为你去做每一件能让你开心快乐的事。<br />
+				<span class="space"/>所有我们经历的点点滴滴，<br />都是我们一辈子最美的回忆。</span> <br />
+				<br />
+			</div>
+			<div id="loveHeart">
+				<canvas id="garden"></canvas>
+				<div id="words">
+					<div id="messages">
+						月,我爱你！
+						<div id="elapseClock"></div>
+					</div>
+					<div id="loveu">
+						Love u forever and ever.<br/>
+						<div class="signature">- wuxia2001</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	</div>
+	<script type="text/javascript">
+		var offsetX = $("#loveHeart").width() / 2;
+		var offsetY = $("#loveHeart").height() / 2 - 55;
+		var together = new Date();
+		together.setFullYear(2010, 10, 2);
+		together.setHours(20);
+		together.setMinutes(0);
+		together.setSeconds(0);
+		together.setMilliseconds(0);
+		
+		if (!document.createElement('canvas').getContext) {
+			var msg = document.createElement("div");
+			msg.id = "errorMsg";
+			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+			document.body.appendChild(msg);
+			$("#code").css("display", "none")
+			$("#copyright").css("position", "absolute");
+			$("#copyright").css("bottom", "10px");
+		    document.execCommand("stop");
+		} else {
+			setTimeout(function () {
+				startHeartAnimation();
+			}, 5000);
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="../assets/js/html5shiv.js"></script>
-    <![endif]-->
+			timeElapse(together);
+			setInterval(function () {
+				timeElapse(together);
+			}, 500);
 
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://bootstrap.ninghao.net/assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://bootstrap.ninghao.net/assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://bootstrap.ninghao.net/assets/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="https://bootstrap.ninghao.net/assets/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="https://bootstrap.ninghao.net/assets/ico/favicon.png">
-  </head>
-
-  <body>
-
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="https://bootstrap.ninghao.net/examples/starter-template.html#">苏潇(Xiao Su)</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="active"><a href="https://bootstrap.ninghao.net/examples/starter-template.html#">Home</a></li>
-              <li><a href="https://bootstrap.ninghao.net/examples/starter-template.html#about">About</a></li>
-              <li><a href="https://bootstrap.ninghao.net/examples/starter-template.html#contact">Contact</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-
-      <h1>Bootstrap starter template</h1>
-      <p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
-
-    </div> <!-- /container -->
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="./Bootstrap, from Twitter_files/jquery.js.下载"></script>
-    <script src="./Bootstrap, from Twitter_files/bootstrap-transition.js.下载"></script>
-    <script src="./Bootstrap, from Twitter_files/bootstrap-alert.js.下载"></script>
-    <script src="./Bootstrap, from Twitter_files/bootstrap-modal.js.下载"></script>
-    <script src="./Bootstrap, from Twitter_files/bootstrap-dropdown.js.下载"></script>
-    <script src="./Bootstrap, from Twitter_files/bootstrap-scrollspy.js.下载"></script>
-    <script src="./Bootstrap, from Twitter_files/bootstrap-tab.js.下载"></script>
-    <script src="./Bootstrap, from Twitter_files/bootstrap-tooltip.js.下载"></script>
-    <script src="./Bootstrap, from Twitter_files/bootstrap-popover.js.下载"></script>
-    <script src="./Bootstrap, from Twitter_files/bootstrap-button.js.下载"></script>
-    <script src="./Bootstrap, from Twitter_files/bootstrap-collapse.js.下载"></script>
-    <script src="./Bootstrap, from Twitter_files/bootstrap-carousel.js.下载"></script>
-    <script src="./Bootstrap, from Twitter_files/bootstrap-typeahead.js.下载"></script>
-
-  
-
-</body></html>
+			adjustCodePosition();
+			$("#code").typewriter();
+		}
+	</script>
+</body>
+</html>
